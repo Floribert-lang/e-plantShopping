@@ -7,6 +7,8 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
+
+
   const calculateTotalAmount = () => {
     return cart
       .reduce((total, item) => total + item.quantity * parseFloat(item.cost.substring(1)), 0)
@@ -56,7 +58,7 @@ const CartItem = ({ onContinueShopping }) => {
                 <span className="cart-item-quantity-value">{item.quantity}</span>
                 <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
               </div>
-              <div className="cart-item-total">Total: ${calculateTotalAmount(item)}</div>
+              <div className="cart-item-total">Subtotal: ${(item.quantity * parseFloat(item.cost.substring(1))).toFixed(2)}</div>
               <button className="cart-item-delete" onClick={() => handleRemove(item)}>Delete</button>
               <button className="cart-item-add" onClick={() => handleAddToCart(item)}>Add More</button>
             </div>
